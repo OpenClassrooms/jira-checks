@@ -4,7 +4,7 @@ import { getTaskInformations } from './helpers';
 export default class SelectedIssueChangeWatcher {
   constructor(onChange) {
     this.onChange = onChange;
-    //this.issue = null;
+
     this.modalIsOpened = null;
     this.waitIssueLoadInterval = null;
     this.watchUrlChanges();
@@ -33,9 +33,7 @@ export default class SelectedIssueChangeWatcher {
     this.stopWaitIssueLoadInterval();
 
     this.waitIssueLoadInterval = setInterval(() => {
-      const element = document.querySelector(
-        'div[role=dialog] [aria-label*=attachment]'
-      );
+      const element = document.querySelector('div[role=dialog] [data-test-id]');
 
       if (!element) {
         return;
