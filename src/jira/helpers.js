@@ -72,8 +72,8 @@ function getTaskInformationsNew(element = document) {
     '[data-test-id="issue.views.issue-base.foundation.summary.heading"]'
   ).innerText;
 
-  const assigneeElement = getBoxInformationRightPanel('assignee');
-  const reporterElement = getBoxInformationRightPanel('reporter');
+  const assigneeElement = getBoxInformationRightPanel('issue.views.field.user.assignee');
+  const reporterElement = getBoxInformationRightPanel('issue.views.field.user.reporter');
 
   const assignee = getUserData(assigneeElement);
   const reporter = getUserData(reporterElement);
@@ -82,22 +82,9 @@ function getTaskInformationsNew(element = document) {
 }
 
 // https://simple-it.atlassian.net/browse/OC-11145 for example, has a right panel
-// with various "box", get one by its title
-function getBoxInformationRightPanel(title, rootElement = document) {
-  const boxes = [
-    ...rootElement.querySelector(
-      '[data-test-id="issue.views.issue-base.context.context-items.primary-items"]'
-    ).children
-  ];
-
-  return boxes.reduce((goodOne, boxElement) => {
-    const boxTitleElement = boxElement.querySelector('h2');
-    if (boxTitleElement && boxTitleElement.innerText.toLowerCase().trim() === title) {
-      return boxElement;
-    }
-
-    return goodOne;
-  }, null);
+// with various "box", get one by its testid
+function getBoxInformationRightPanel(testId, rootElement = document) {
+  return rootElement.querySelector(`[data-test-id="${testId}"]`);
 }
 
 function getTaskInformationsOld(element) {
