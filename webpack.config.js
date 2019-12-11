@@ -5,9 +5,11 @@ const WebpackAutoInject = require('webpack-auto-inject-version');
 
 const VERSION = require('./package.json').version;
 
+const isProd = process.env.DEV_MODE !== 'true';
+
 const config = {
   context: __dirname,
-
+  mode: 'production',
   entry: {
     task: './src/task.js',
     board: './src/board.js',
@@ -56,8 +58,6 @@ const config = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(),
-
     new CopyWebpackPlugin([
       {
         from: 'ressources/**/*',
@@ -85,5 +85,9 @@ const config = {
     })
   ]
 };
+
+if (isProd) {
+  config.plugins = [new CleanWebpackPlugin(), ...config.plugins];
+}
 
 module.exports = config;
