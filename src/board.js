@@ -15,8 +15,9 @@ async function renderCheckList(jira) {
 
   // "New" JIRA UI
   if (!descriptionModuleElement) {
-    const element = dialog.querySelectorAll('[class^=GridColumnElement__GridColumn]')[1];
-    descriptionModuleElement = element.querySelectorAll(':scope > div > div')[2];
+    descriptionModuleElement = document.querySelector(
+      '[data-test-id="issue.views.field.rich-text.description"]'
+    ).parentElement;
   }
 
   const currentUser = await getUserInformations();
