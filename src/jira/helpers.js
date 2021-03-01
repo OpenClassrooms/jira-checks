@@ -18,7 +18,7 @@ function getUserData(element) {
   //   .querySelector('span[role=img]')
   //   .style.backgroundImage.match(/(https:\/\/.*?)"/)[1];
 
-  const displayName = element.querySelector('[class^="SingleLineTextInput__ReadView"]').innerText;
+  const displayName = element.innerText;
 
   return {
     // avatarUrl,
@@ -98,10 +98,7 @@ function getTaskInformationsOld(element) {
 
   const createdAt = createdValElement
     ? new Date(
-        document
-          .querySelector('#created-val')
-          .querySelector('time')
-          .getAttribute('datetime')
+        document.querySelector('#created-val').querySelector('time').getAttribute('datetime')
       )
     : '';
 

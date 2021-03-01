@@ -1,6 +1,6 @@
 {
   "name": "jira-checks",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "DEV_MODE=true webpack --watch",
