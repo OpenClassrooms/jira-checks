@@ -36,7 +36,7 @@
     "eventemitter3": "^4.0.0",
     "firebase": "^7.14.2",
     "lodash": "^4.17.15",
-    "qs": "^6.9.3",
+    "qs": "^6.10.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-textarea-autosize": "^7.1.2",
